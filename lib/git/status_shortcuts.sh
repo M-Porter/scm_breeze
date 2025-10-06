@@ -225,11 +225,13 @@ git_commit_prompt() {
     saved_commit_msg="$(cat "$commit_msg_file")"
     echo -e "\033[0;36mLeave blank to use saved commit message: \033[0m$saved_commit_msg"
   fi
-  if breeze_shell_is "zsh"; then
-    vared -h -p "Commit Message: " commit_msg
-  else
-    read -r -e -p "Commit Message: " commit_msg
-  fi
+
+  # if breeze_shell_is "zsh"; then
+  #   vared -h -p "Commit Message: " commit_msg
+  # else
+  #   read -r -e -p "Commit Message: " commit_msg
+  # fi
+  read -r -e -p "Commit Message: " commit_msg
 
   if [ -z "$commit_msg" ]; then
     if [ -n "$saved_commit_msg" ]; then
